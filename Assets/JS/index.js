@@ -50,8 +50,6 @@ let updateQuestionsCounter = 0;
 let questionNumber = 1;
 let totalQuestions = questions.length;
 
-
-
 // Get DOM elements
 const time = document.getElementById('time');
 const question = document.getElementById('question');
