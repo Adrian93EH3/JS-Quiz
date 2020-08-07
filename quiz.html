@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Assets/CSS/styles.css">
+
+    <title>Welcome to this Quiz!</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="highscore.html">View Highscores</a>
+            <p class="navbar-brand red" style="margin-left: auto">Time Left</p>
+        </nav>
+    </div>
+    <div id="quiz">
+        <div id="q1">
+            <h4><span id="questionNumber">1</span>) <span id="question">Which color is my favorite?</span></h4>
+            <button id="answer1" class="btn" onclick="checkAnswer(this)">Blue</button>
+            <button id="answer2" class="btn" onclick="checkAnswer(this)">Red</button>
+            <button id="answer3" class="btn" onclick="checkAnswer(this)">Green</button>
+            <button id="answer4" class="btn" onclick="checkAnswer(this)">Yellow</button>
+        </div>
+    </div>
+
+    <script src="./Assets/JS/index.js"></script>
+</body>
+
+</html>

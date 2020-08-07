@@ -1,0 +1,23 @@
+#quiz{
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  
+  h4{
+    margin-top: 0;
+  }
+  
+  .btn{
+    width: calc(50% - 10px);
+    margin: 5px;
+    background: #333;
+    color: white;
+  } 
+  
+  .time{
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    margin: 0;
+  }
