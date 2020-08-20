@@ -17,15 +17,15 @@ var highScoreObj = [];
 
 var questions = [
     {
-        question: 'Who is the main protagonist of Boruto',
+        question: 'Who is the main protagonist of Boruto?',
         answers: ['Sasuke', 'Sakura', 'Naruto', 'Boruto'],
         correct: '3'
     }, {
-        question: 'Who is the main antagonist of Smash Bros.',
+        question: 'Who is the main antagonist of Smash Bros.?',
         answers: ['Master Hand', 'Bowser', 'Wario', 'None'],
         correct: '0'
     }, {
-        question: 'What is the solution of x = (6 * 2) + 10(3 + 2)',
+        question: 'What is the solution of x = (6 * 2) + 10(3 + 2)?',
         answers: ['110', '27', '62', '68'],
         correct: '2'
     }

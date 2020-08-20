@@ -4,7 +4,7 @@
 Start on index.html. From there run the site and begin answering the questions. I will come back and add a way to end once there's no more quesitons to populate/paginate.
 
 # Start Page
-https://prnt.sc/tvf986
+
 
 # Quiz Page
 https://prnt.sc/tvf9d4
