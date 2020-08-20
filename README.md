@@ -25,3 +25,6 @@ Start on index.html. From there, click the button to begin answering the questio
 
 # Highscores List
 <img src="Assets\Images\highscore.png" alt="highscore_list_of_quiz_picture_">
+
+# Link To Site
+https://adrian93eh3.github.io/JS-Quiz/
