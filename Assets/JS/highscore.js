@@ -1,14 +1,11 @@
-var highScoresEL = document.getElementById("highscores");
-var highScores = JSON.parse(localStorage.getItem("highscores"))
-    (highScores !== null){
-        highScores = highScores.sort(function(a, b){
-            return b.score - a.score;
-        });
-        console.log(highScores)
+var listGroupScoresEl = document.getElementById('list-group-scores');
 
-        for (var i = 0; i < highScores.length; i++){
-            var li = document.createElement("li");
-            li.textContent = "initials: " + highScores[i].initials + "score: " + highScores[i].score
-            highScoresEL.appendChild(li)
-        }
-    }
+if (localStorage.getItem('highScoreObj')) {
+    var highScores = JSON.parse(localStorage.getItem('highScoreObj'));
+    for (let i = 0; i < highScores.length; i++) {
+        var li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = 'Player: ' + highScores[i].initials + ' \| Score: ' + highScores[i].score;
+        listGroupScoresEl.appendChild(li);
+    };
+};

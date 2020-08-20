@@ -1,23 +1,15 @@
-#quiz{
-    max-width: 600px;
-    margin: 0 auto;
-    margin-top: 50px;
+input::-webkit-input-placeholder {
+  color: white !important;
   }
-  
-  h4{
-    margin-top: 0;
+   
+  input:-moz-placeholder { /* Firefox 18- */
+  color: white !important;  
   }
-  
-  .btn{
-    width: calc(50% - 10px);
-    margin: 5px;
-    background: #333;
-    color: white;
-  } 
-  
-  .time{
-    position: absolute;
-    right: 20px;
-    top: 50px;
-    margin: 0;
+   
+  input::-moz-placeholder {  /* Firefox 19+ */
+  color: white !important;  
+  }
+   
+  input:-ms-input-placeholder {  
+  color: white !important;
   }

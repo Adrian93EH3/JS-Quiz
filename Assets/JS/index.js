@@ -1,138 +1,116 @@
-// Set all questions
-const questions = [
-  "What is my favorite color?",
-  "What's 2+6?",
-  "Which one is not an operator?",
-  "What languages are needed for a website?" 
-]
-
-// Set all answers
-const allAnswers = [
-  {  
-    firstAnswer: "Blue",
-    secondAnswer: "Red",
-    thirdAnswer: "Green",
-    fourthAnswer: "Yellow"
-  },
-  {  
-    firstAnswer: "8",
-    secondAnswer: "4",
-    thirdAnswer: ".8",
-    fourthAnswer: "12"
-  },
-  {  
-    firstAnswer: "+",
-    secondAnswer: "*",
-    thirdAnswer: "|",
-    fourthAnswer: "/"
-  },
-  {
-    firstAnswer: "HTML",
-    secondAnswer: "CSS",
-    thirdAnswer: "JavaScript",
-    fourthAnswer: "All of them"
-  }
-]
-
-// Set all correct awnsers
-const correctAnswers = [
-  "Red",
-  "8",
-  "|",
-  "All of them"
-]
-
-// Set current score, question and answer
-let timePoints = 0;
-let correctAnswerNumber = 0;
-let updateOptionsCounter = 0;
-let updateQuestionsCounter = 0;
-let questionNumber = 1;
-let totalQuestions = questions.length;
-
-// Get DOM elements
-const time = document.getElementById('time');
-const question = document.getElementById('question');
-
-// Update current question
-function nextQuestion() {
-
-  // Increment 
-  correctAnswerNumber ++;
-  
-  // Update question number
-  (function updateQuestionNumber() {
-    questionNumber ++;
-    var questionNumberDom = document.getElementById('questionNumber');
-    questionNumberDom.innerHTML = questionNumber;
-    return questionNumber;
-  })();
-
-  
-  // update Options
-  (function updateOptions() {
-    updateOptionsCounter ++;
-
-    const answer1 = document.getElementById('answer1');
-    const answer2 = document.getElementById('answer2');
-    const answer3 = document.getElementById('answer3');
-    const answer4 = document.getElementById('answer4');
-
-    answer1.innerHTML = allAnswers[updateOptionsCounter].firstAnswer;
-    answer2.innerHTML = allAnswers[updateOptionsCounter].secondAnswer;
-    answer3.innerHTML = allAnswers[updateOptionsCounter].thirdAnswer;
-    answer4.innerHTML = allAnswers[updateOptionsCounter].fourthAnswer;
-  })();
-
-  
-  // update question counter
-  (function updateQuestions() {
-    updateQuestionsCounter ++;
-
-    question.innerHTML = questions[updateQuestionsCounter];
-  })(); 
-  
-}
+var startBtn = document.getElementById('start');
+var introContainer = document.getElementById('intro-container');
+var timerEl = document.getElementById('timer');
+var questionEl = document.getElementById('question');
+var answerList = document.getElementById('answer-list');
+var examContainer = document.getElementById('exam-container');
+var initialsContainer = document.getElementById('initials-container');
+var scoreEl = document.getElementById('score');
+var initialsBtn = document.getElementById('initials-submit');
+var initialsText = document.getElementById('initials-text');
 
 
-// Check for the correct answer then show next question
-function checkAnswer(answeredQuestion) {
-  let answered = answeredQuestion.innerHTML; 
-  
-  if(answered == correctAnswers[correctAnswerNumber]) {
-        
-    // Check for last question then end the quiz
-    if (questionNumber == totalQuestions){
-      updateTime();
-    } 
-    else {
-      nextQuestion();  
-      updateTime();
+var interval; //undefined variable for timer setInterval
+var timeLeft = 60;
+var questionNumber = 0;
+var highScoreObj = [];
+
+var questions = [
+    {
+        question: 'Who is the main protagonist of Boruto',
+        answers: ['Sasuke', 'Sakura', 'Naruto', 'Boruto'],
+        correct: '3'
+    }, {
+        question: 'Who is the main antagonist of Smash Bros.',
+        answers: ['Master Hand', 'Bowser', 'Wario', 'None'],
+        correct: '0'
+    }, {
+        question: 'What is the solution of x = (6 * 2) + 10(3 + 2)',
+        answers: ['110', '27', '62', '68'],
+        correct: '2'
     }
-  } 
-  else {
-    secondsLeft -=15
-    nextQuestion();
-  }
+]
+
+//set timer on page load
+timerEl.textContent = timeLeft;
+
+function timer() {
+    interval = setInterval(function() {
+        timeLeft--;
+        timerEl.textContent = timeLeft;
+        if (timeLeft <= 0) {
+            initInitials();
+        }
+    }, 1000);
 }
 
-var timeEl = document.querySelector(".red");
-var secondsLeft = 45;
-function setTime() {
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + "Time left";
+function initInitials() {
+    clearInterval(interval);
+    examContainer.classList.remove('d-block')
+    examContainer.classList.add('d-none');
+    initialsContainer.classList.remove('d-none');
+    initialsContainer.classList.add('d-block');
+    scoreEl.textContent = timeLeft;
+}
 
-    if(secondsLeft <= 0) {
-      clearInterval(timerInterval);
-      alert("You are out of time");
+function populateQuestions() {
+    if (questionNumber < questions.length) {
+        questionEl.textContent = questions[questionNumber].question;
+        answerList.innerHTML = "";
+        for (let i = 0; i < questions[questionNumber].answers.length; i++) {
+            var li = document.createElement('li');
+            answerList.appendChild(li);
+            var answerBtn = document.createElement('button');
+            answerBtn.id = i;
+            answerBtn.className = 'btn btn-primary m-1';
+            answerBtn.textContent = questions[questionNumber].answers[i];
+            li.appendChild(answerBtn);
+        }
+    } else {
+        initInitials();
     }
-  }, 1000);
 }
-setTime();
 
+startBtn.addEventListener('click', function() {
+    introContainer.classList.add('d-none');
+    timerEl.textContent = timeLeft; // just so time immediately shows upon pressing start button
+    timer();
+    examContainer.classList.add('d-block');
+    populateQuestions();
+});
 
+answerList.addEventListener('click', function(e) {
+    if (e.target.matches('button')) {
+        var choice = e.target.id;
+        if (choice.toString() === questions[questionNumber].correct) {
+            questionNumber++;
+            populateQuestions();
+        } else {
+            timeLeft = timeLeft - 15;
+            timerEl.textContent = timeLeft;
+            questionNumber++;
+            populateQuestions();
+        }
+    }
+});
 
-
-
-
+initialsBtn.addEventListener('click', function() {
+    if(localStorage.getItem('highScoreObj')) {
+        highScoreObj = JSON.parse(localStorage.getItem('highScoreObj'));
+        highScoreObj.push({
+            initials: initialsText.value,
+            score: timeLeft
+        });
+        localStorage.setItem('highScoreObj', JSON.stringify(highScoreObj));
+        window.location.href = 'highscore.html';
+    } else {
+        highScoreObj = [
+            {
+            initials: initialsText.value,
+            score: timeLeft
+            }
+        ];
+        localStorage.setItem('highScoreObj', JSON.stringify(highScoreObj));
+        window.location.href = 'highscore.html'
+    }
+});
