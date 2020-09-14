@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
-    integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-    <title>Document</title>
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <!-- FAVICON LINK -->
+    <link rel="icon" href="Images\favicon.ico" type="image/gif" sizes="16x16">
+    <title>Highscores Page</title>
 </head>
+
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2>HighScores</h2>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Top Highscores</h2>
+                </div>
                 <div>
-                    <ol id="highscores"></ol>
+                    <ol id="highscore"></ol>
                 </div>
             </div>
         </div>
-        <a href="start.html"><button>Return To Start Screen</button></a>
+    </div>
+    <div class="container">
+        <a href="index.html"><button class="btn btn-primary">Return To Start Screen</button></a>
     </div>
 
 
-    <script src="./Assets/JS/highscore.js"></script>
+    <script src="Assets\JS\highscore.js"></script>
 </body>
+
 </html>
