@@ -215,10 +215,10 @@ function init() {
 // FUNCTION TO CHECK IF THE ANSWER IS CORRECT
 // ====================================================
 function checkAnswer() {
-    if (!e.target.classList.contains("answer")){
+    if (!event.target.classList.contains("answer")){
         return
     }
-    var btnValue = e.target.value
+    var btnValue = event.target.value
     // DECREMENTING TIME/SCORE BY 15sec PER WRONG ANSWER
     // ======================================================
     if (questions[currentQuestion].choices[btnValue] !== questions[currentQuestion].answer) {
