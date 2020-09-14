@@ -11,4 +11,12 @@ THEN the game is over <br>
 WHEN the game is over <br>
 THEN I can save my initials and score
 
-# Home-Page
+# Deployed-Site
+
+https://adrian93eh3.github.io/JS-Quiz/
+
+<img src="Images\JSQuiz-Video.gif">
+
+# Video-Displaying-Site
+
+https://drive.google.com/file/d/1_qR2wDjs5KVKYb_k0m73rEXa6zfrjYTz/view
